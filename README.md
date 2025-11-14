@@ -1,147 +1,90 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/mMxhKicI)
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=21445569&assignment_repo_type=AssignmentRepo)
-# COMP 163 - Project 2: Character Abilities Showcase
+# COMP 163 – Project 2: Character Abilities Showcase
+**Author:** Jeremiah Cooper
+**Date:** November 6, 2025
 
-## 🎯 Project Overview
+---
 
-Build a simple character system that demonstrates mastery of object-oriented programming fundamentals: inheritance, method overriding, polymorphism, and composition. This project focuses on core OOP concepts without the complexity of a full game system.
+## Game Concept
+This project builds a fantasy RPG battle and character system demonstrating core OOP concepts: inheritance, polymorphism, method overriding, and composition.
+Players interact with multiple character classes that each have unique attacks and special abilities, including bonus fantasy classes not required by the assignment.
+The provided SimpleBattle system showcases one-round combat between any two characters, allowing full demonstration of class-specific behavior and damage mechanics.
 
-## 📋 Getting Started
+---
 
-1. **Complete your implementation** in `project2_starter.py`
-2. **Test your code** by running: `python project2_starter.py`
-3. **Run automated tests** with: `python -m pytest tests/ -v`
-4. **Commit and push** to see GitHub test results
+## Design Choices
+I designed my stat formulas to reflect each class’s strengths and weaknesses while keeping the math simple and balanced.
+Class	Role & Design Intent	Strength Formula	Magic Formula	Health Formula
+Warrior	Strong melee fighter with high Strength and Health but low Magic	20 + level * 4	1 + level * 1	120 + level * 10
+Mage	Magic specialist with high Magic but low Strength and Health	5 + level * 1	20 + level * 4	60 + level * 6
+Rogue	Balanced and agile with steady overall growth	12 + level * 3	5 + level * 2	80 + level * 5
+Angel   Holy powerhouse with overpower mechanics	20 + level * 5	25 + level * 5	120 + level * 12
+Devil   Dark magic destroyer with high destructive multipliers	18 + level * 4	23 + level * 5	110 + level * 10
+A default formula is also included for unrecognized class names to prevent runtime errors.
+This design ensures each class feels unique and scales fairly across levels.
 
-## 🏗️ What You're Building
+---
 
-### **Class Structure (6 Classes Total)**
+## Composition Features:
+Weapon Class – adds bonus attack power
+Pet Class  – unique companion bonus system
+This structure is modular, expandable, and easy to maintain.
 
-```
-Character (base class)
-    ↓
-Player (inherits from Character)  
-    ↓
-Warrior, Mage, Rogue (inherit from Player)
+---
 
-Weapon (composition - separate class)
-```
+## Bonus Creative Features
+Angel Class with overpower mechanics
+Devil Class with dark magic multipliers
+Pet Class to demonstrate companion bonuses
+Randomized mechanics: critical hits, overpower triggers, dark-magic multipliers
 
-### **Required Stats for Each Class:**
+---
 
-| Class   | Health | Strength | Magic | Special Ability |
-|---------|--------|----------|-------|-----------------|
-| Warrior | 120    | 15       | 5     | Power Strike    |
-| Mage    | 80     | 8        | 20    | Fireball        |
-| Rogue   | 90     | 12       | 10    | Sneak Attack    |
+## Comprehensive testing in the __main__ block demonstrating:
+Polymorphism
+Special abilities
+Weapon composition
+Battle simulation
 
-## 🎮 Core Functionality
+---
 
-### **All Characters Must Have:**
-- `attack(target)` - Basic attack method
-- `take_damage(damage)` - Reduce health
-- `display_stats()` - Print character information
+## AI Usage
+I consulted ChatGPT for support in:
+OOP Structure: Understanding inheritance, polymorphism, and method overriding
+Debugging: Fixing variable names, missing assignments, and logic errors
+Clarity & Formatting: Improving print statements and method organization
+Docstrings & Comments: Polished inline documentation
+README Writing: Guidance for professional formatting
+All final logic, implementation, and creative features were completed independently by me (Jeremiah Cooper).
+The AI was used only as a learning and polishing tool — this is original work meeting all COMP 163 requirements.
 
-### **Players Additionally Have:**
-- `character_class` attribute (like "Warrior", "Mage")
-- `level` and `experience` attributes
-- Enhanced `display_stats()` that shows player info
+---
 
-### **Special Abilities (Each Class):**
-- **Warrior**: `power_strike(target)` - High damage attack
-- **Mage**: `fireball(target)` - Magic damage attack
-- **Rogue**: `sneak_attack(target)` - Critical hit attack
+## How to Run
+Run in Terminal
+Navigate to your project folder and run:
+python3 project2_character_showcase.py
+Program Behavior
+The if __name__ == "__main__": block will:
+Display stats for Warrior, Mage, and Rogue
+Test polymorphism with dummy attacks
+Demonstrate special abilities for each class
+Display Weapons and Pets using composition
+Run a battle simulation via SimpleBattle
+📋 Example Output (Shortened)
+=== CHARACTER ABILITIES SHOWCASE ===
+Testing inheritance, polymorphism, and method overriding
+=========================================================
 
-### **Weapons (Composition):**
-- `Weapon(name, damage_bonus)` - Characters can HAVE weapons
-- `display_info()` - Show weapon information
+📊 Character Stats:
+Character name: Sir Galahad
+Characters health: 120
+Characters strength: 15
+Characters magic: 5
+Class: Warrior
+Level: 1
+Experience: 0
 
-## ✅ Testing Your Code
-
-### **Local Testing**
-```bash
-# Run all tests
-python -m pytest tests/ -v
-
-# Run specific test categories
-python -m pytest tests/test_inheritance.py -v
-python -m pytest tests/test_method_overriding.py -v
-python -m pytest tests/test_special_abilities.py -v
-
-# Test your main program
-python project2_starter.py
-```
-
-### **GitHub Testing**
-
-After pushing your code, check the **Actions** tab to see automated test results:
-
-- ✅ **Inheritance Tests** (20 points) - Class structure and inheritance chain
-- ✅ **Method Overriding Tests** (20 points) - Polymorphism and customized methods
-- ✅ **Special Abilities Tests** (15 points) - Character abilities and composition
-
-## 🎮 Example Usage
-
-Your program should work like this:
-
-```python
-# Create characters (inheritance)
-warrior = Warrior("Marcus")
-mage = Mage("Aria")  
-rogue = Rogue("Shadow")
-
-# Polymorphism - same method, different behavior
-for character in [warrior, mage, rogue]:
-    character.attack(target)  # Each attacks differently
-
-# Special abilities
-warrior.power_strike(enemy)
-mage.fireball(enemy)
-rogue.sneak_attack(enemy)
-
-# Composition
-sword = Weapon("Iron Sword", 15)
-sword.display_info()
-
-# Test battle system (provided for you)
-battle = SimpleBattle(warrior, mage)
-battle.fight()
-```
-
-## 🎲 SimpleBattle System (Provided)
-
-You have a **SimpleBattle** class already written that you can use to test your characters:
-
-```python
-battle = SimpleBattle(character1, character2)
-battle.fight()  # Simulates a simple battle
-```
-
-**⚠️ DO NOT MODIFY the SimpleBattle class** - it's provided for testing your implementations.
-
-## ⚠️ Important Notes
-
-### **Protected Files**
-- **DO NOT MODIFY** files in the `tests/` directory
-- **DO NOT MODIFY** the `SimpleBattle` class
-- Modifying protected files will result in automatic academic integrity violation
-
-### **AI Usage Policy**
-- ✅ **Allowed**: AI assistance for implementation, debugging, learning
-- 📝 **Required**: Document AI usage in code comments
-- 🎯 **Must be able to explain**: Every class and method during interview
-
-## 🏆 Grading
-
-- **Inheritance Tests (20%)**: Proper 3-level inheritance chain
-- **Method Overriding (20%)**: Polymorphism and customized behaviors
-- **Special Abilities (15%)**: Character-specific methods and composition
-- **Code Quality (5%)**: Professional comments and documentation
-- **Interview (40%)**: Code explanation and live coding
-
-## 🎨 Bonus Creative Elements
-
-Feel free to add your own creative touches for bonus points:
-- Additional character classes beyond the three required
-- More weapon types with different properties
-- Enhanced special abilities with unique effects
+⚔️ Testing Polymorphism:
+Sir Galahad attacks Target Dummy for 20 damage!
+Merlin casts a spell on Target Dummy for 20 damage!
+Robin Hood attacks Target Dummy for 12 damage! (Critical hit possible)
