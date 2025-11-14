@@ -4,8 +4,15 @@ COMP 163 - Project 2: Character Abilities Showcase
 Name: Jeremiah Cooper
 Date: 11/6/25
 
-AI Usage: [Document any AI assistance used]
-Example: AI helped with inheritance structure and method overriding concepts
+AI Usage:
+ChatGPT was used to support this assignment by:
+- Explaining inheritance, polymorphism, and class design patterns
+- Providing examples of method overriding and special ability methods
+- Helping explaning code errors (e.g., missing assignments, incorrect attribute names)
+- Suggesting improvements for formatting, clarity, and structure
+- Assisting with writing professional docstrings and inline comments
+
+All implementation choices, modifications, and final code structure were completed by the student.
 """
 
 # ============================================================================
